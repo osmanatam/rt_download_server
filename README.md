@@ -43,5 +43,5 @@ Handling requests is based on path - if you are not authorized, you can see auth
 Prettifying
 ------------------
 
-All html templates are in page_templates.py page, but be careful with separate files like images or script files - ther is no handler that can get them - you will be shown just login or torrent add page. You have to write extension to have ability to include files.
+All html templates are in page_template.py page, but be careful with separate files like images or script files - ther is no handler that can get them - you will be shown just login or torrent add page. You have to write extension to have ability to include files.
 
