@@ -24,7 +24,7 @@ def _usage(progname):
     -c, --config= config - path to server config
     -p, --port= port - overrides config's port value
     -h, --help - print this help and exit
-    '''
+    ''' % progname
 
 def get_rutracker_authdata():
     print 'Please enter RuTracker.Org login data'
