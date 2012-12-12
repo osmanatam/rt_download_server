@@ -77,6 +77,7 @@ class TorrentServHandler(BaseRequestHandler):
 
     def process(self, path):
         '''Call to handler of path of to handler of '*'.'''
+
         path = path.lstrip('/')
         if path not in self.handlers:
             path = '*'
@@ -85,6 +86,7 @@ class TorrentServHandler(BaseRequestHandler):
 
         if not headers and not body:
             self.send_error(status)
+            return
 
         self.send_response(status)
 

@@ -22,6 +22,7 @@ class TAddHandler(tanyhandler.IHandler):
         '''
 
         super(TAddHandler, self).__init__(page_template)
+
         self.save_path = os.getcwd()
         self.file_exists_template = '''
         <html><head>
