@@ -10,9 +10,8 @@ import taddhandler
 import page_template
 import BaseHTTPServer as bhs
 import functools
-import ConfigParser
 import getopt
-import os.path
+import config
 
 import auth
 
@@ -65,27 +64,12 @@ def parse_args(args):
 
     return (conffile, port)
 
-def parse_conf(conffile):
-    '''Parses config file.'''
-
-    parser = ConfigParser.RawConfigParser()
-    parser.read(conffile)
-
-    port, save_path = (None, None)
-    try:
-        port = parser.getint('Server', 'port')
-        save_path = parser.get('Server', 'save_path')
-    except ConfigParser.Error:
-        pass
-
-    users = parser.items('Users')
-
-    return port, save_path, users
 
 if __name__ == '__main__':
     (conffile, argport) = parse_args(sys.argv[1:])
 
-    (port, save_path, users) = parse_conf(conffile)
+    conf = config.TorrentDownloaderConfig(conffile)
+    (port, save_path, users) = (conf.port, conf.save_path, conf.users)
     if argport:
         port = argport
 
@@ -98,7 +82,7 @@ if __name__ == '__main__':
 
     add_handler = taddhandler.TAddHandler(page_template.success)
     if save_path:
-        add_handler.set_save_path(os.path.expanduser(save_path))
+        add_handler.set_save_path(save_path)
     add_handler.set_file_exists_template(page_template.file_exists)
 
     handlers = {
