@@ -107,14 +107,13 @@ class RutrackerBrowser(object):
         self.check_topic_url(topic_url)
 
         res = self.open_topic_url(topic_url)
-        cookie_topic = self._get_auth_cookie(res, 'bb_t')
-        # I need to get smth from topic cookie, auth cookie,
+        # I need to get smth from auth cookie,
         # combine this parts + bb_dl=%(topic_id)s
 
         match = RutrackerBrowser._topic_re.search(topic_url)
         topic_id = match.group(1)
 
-        cookie_dl = '%s; %s; bb_dl=%s' % (self._cookie_auth, cookie_topic, topic_id)
+        cookie_dl = '%s; bb_dl=%s' % (self._cookie_auth, topic_id)
 
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0',
