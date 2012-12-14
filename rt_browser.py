@@ -154,8 +154,10 @@ class RutrackerBrowser(object):
 
         return cookie[start:finish]
 
-#expample
-#    b = RutrackerBrowser()
+#example
+#if __name__ == '__main__':
+#    b = RutrackerBrowser('login', 'password')
+#    b.login()
 #    res = b.get_torrent('http://rutracker.org/forum/viewtopic.php?t=3656915')
 #    with open('test.torrent', 'wb') as f:
 #        f.write(res.read())
