@@ -20,6 +20,7 @@ class RutrackerBrowser(object):
     '''Class RutrackerBrowser presents browser for RuTracker.Org.
 
     It allows logging in and getting .torrent files from RuTracker.Org.'''
+
     _topic_re = re.compile('[\s/?&]t=(\d+)')
 
     def __init__(self, login, password):
