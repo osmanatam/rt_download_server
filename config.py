@@ -47,7 +47,7 @@ class TorrentDownloaderConfig(object):
         path = os.path.expanduser(path)
 
         if not os.path.exists(path):
-            raise RuntimeError('path does not exists')
+            raise RuntimeError("path '%s' does not exists" % path)
 
         return path
 
