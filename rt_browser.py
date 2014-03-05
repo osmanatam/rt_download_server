@@ -105,6 +105,7 @@ class RutrackerBrowser(object):
         req = urllib2.Request(dl_url)
         req.add_header('Referer', topic_url)
 
+        self._cookie_jar.set_cookie(cookielib.Cookie(version=0, name='bb_dl', value=topic_id, port=None, port_specified=False, domain='.rutracker.org', domain_specified=False, domain_initial_dot=False, path='/', path_specified=True, secure=False, expires=None, discard=True, comment=None, comment_url=None, rest={'HttpOnly': None}, rfc2109=False))
         res = self._url_opener.open(req)
 
         return res
@@ -117,6 +118,4 @@ class RutrackerBrowser(object):
 #    res = b.get_torrent('http://rutracker.org/forum/viewtopic.php?t=3656915')
 #    with open('test.torrent', 'wb') as f:
 #        f.write(res.read())
-
-
 
